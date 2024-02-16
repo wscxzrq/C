@@ -1,18 +1,9 @@
 #include <stdio.h>
 int main() {
-  int max(int x, int y);
-  int a,b,c;
-  scanf("%d,%d",&a,&b);
-  c = max(a,b);
-  printf("max=%d",c);
-}
-
-int max(int x, int y) {
-  int z;
-  if(x > y) {
-    z = x;
-  }else {
-    z = y;
-  }
-  return(z);
+  char a1[15],a2[15];
+  gets(a1);
+  scanf("%s",a2);
+  printf("a1=%s\n",a1);
+  printf("a2=%s\n",a2);
+  return 0;
 }
