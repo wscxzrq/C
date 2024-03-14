@@ -1,7 +1,7 @@
 #include <stdio.h>
 int main() {
-  char ch[] = {"abc\0def"},*p=ch;
-  printf("%c",*p+4);
+  int a=2,b=5;
+  printf("%d\n",a%b);
 
   return 0;
 }
