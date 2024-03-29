@@ -1,16 +1,17 @@
 #include <stdio.h>
 #include "string.h"
-int f(int a){
-  int b=4;
-	static int c=4;
-	b++; // 5
-	c++; // 5
-	return(a+b+c); // 14  15  16
-}
+
 int main() {
-  int a=4,i;
-  for(i=0;i<3;i++) {
-    printf("%4d",f(a));
+
+    int i,j;
+  for(i=1;i<=5;i++) {
+    for(j=1; j<=i;j++) {
+      printf("");
+    }
+    for(j=1;j<=10-(2*i-1);j++) {
+      printf("&");
+    }
+    printf("\n");
   }
 
   return 0;
