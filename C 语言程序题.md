@@ -215,7 +215,7 @@ main() {
 
 # 2005 年 10 月 全国卷
 
-## 程序分析 每小题五分
+## 程序分析 每小题5分
 
 ```c
 main() {
@@ -437,3 +437,284 @@ int main() {
 ```
 
 # 2006 年 10 月 全国卷
+
+## 程序分析 每小题 5 分
+
+```c
+int main () {
+  int i,s=0;
+  for(i=1;i<10;i+=2) {
+    s+=i+1;
+  } 
+  printf("%d\n",s);
+  return 0;
+}
+// 30
+```
+
+```c
+int main () {
+  int x=15,y=21,z=0;
+  switch(x%3) {
+    case 0:
+      z++;
+      break;
+    case 1:
+      z++;
+    switch(y%2) {
+      default:
+        z++;
+      case 0:
+        z++;
+        break;
+    }
+  }
+  printf("%d\n",z);
+}
+// 1
+```
+
+```c
+main () {
+  int a=0,b=5,c=3;
+  while(c>0 && a<5) {
+    b=b-1;
+    ++a;
+    c--;
+  }
+  printf("%d,%d,%d\n",a,b,c);
+}
+// 3 2 0
+```
+
+```c
+int z=5;
+f() {
+  static int x=2;int y=5;
+  x=x+2;
+  z=z+5;
+  y=y+z;
+  printf("%5d%5d\n",x,z);
+}
+
+int main() {
+  static int x=10; int y;
+  y=z;
+  printf("%5d%5d\n",x,z);
+  f();
+  printf("%5d%5d\n",x,z);
+  f();
+}
+// 10 5
+// 4 10
+// 10 10
+// 6 15
+```
+
+```c
+struct prob {
+  char *a;
+  int b;
+} x[] = {"Zhang San",19,"Li Si",21,"Wang Wu",20};
+int main () {
+  int i,m1,m2;
+  m1 = m2 = x[0].b;
+  for(i=1; i<3; i++) {
+    if(x[i].b > m1) {
+      m1=x[i].b;
+    }else if(x[i].b < m2) {
+      m2 = x[i].b;
+    }
+  }
+
+  for(i=0; i<3; i++) {
+    if(x[i].b != m1 && x[i].b != m2) {
+      printf("%s:%d\n",x[i].a,x[i].b);
+      break;
+    }
+  }
+}
+// Wang wu:20
+```
+
+## 程序填充题 每小题 6 分
+
+![image-20240401222743703](image-20240401222743703.png)
+
+```c
+long fac(int n) {
+  if(n == 0 || n == 1) { // 空
+    return (1);
+  }else {
+    return n * fac(n-1); // 空
+  }
+}
+
+int main() {
+  int m;
+  long int fa;
+
+  for(m=0;m<=10; m++) {
+    fa = fac(m); // 空
+    printf("%d!=%ld\n",m,fa);
+  }
+}
+```
+
+<img src="image-20240401224034954.png" alt="image-20240401224034954" style="zoom:25%;" />
+
+```c
+int main() {
+  int i,j,a[5][5]; // a 的定义是空
+  for(i=0; i<5; i++) {
+    for(j=0; j<5; j++) {
+      a[i][j] = i + j; // i + j 是空
+    }
+  }
+  for(i=0; i<5; i++) {
+    for(j=0; j<5; j++) {
+      printf("%2d",a[i][j]);
+      if(j == 4) printf("\n"); // 空
+    }
+  }
+}
+```
+
+键入一串字符（换行作为结束标志），统计字符的个数，将该串字符及字符个数显示到屏幕上并写入文件str. dat中。
+
+```c
+int main() {
+  char ch;int sumch = 0;
+  FILE *fp;
+  fp = fopen("str.dat","w");
+  while((ch=getchar())!='\n') { // '\n' 是空
+    sumch ++;
+    putchar(ch);
+    fputc(ch,fp); // ch 是空
+  }
+
+  printf("sumch=%d\n",sumch);
+  fprintf(fp,"sumch=%d\n",sumch); // fp 是空
+  fclose(fp);
+}
+```
+
+为实型变量x输入一个值后，输出x的值、x的平方根、x的平方、x的立方根和x的立方。
+
+```c
+int main() {
+  float x;
+  scanf("%f",&x);
+  printf("%.4f,%.4f,%.4f,%.4f,%.4f",x,sprt(x),x*x,pow(x,1.0/3),pow(x,3));
+}
+```
+
+输入三个整型数，找出其中数值最大者并输出。
+
+```c
+int main() {
+  int a,b,c,max;
+  scanf("%d%d%d",&a,&b,&c);
+  if(a>b) {
+    max = a;
+  }else {
+    max = b;
+  }
+  if(c > max) {
+    max = c;
+  }
+  printf("a=%d,b=%d,c=%d,max=%d\n",a,b,c,max);
+}
+```
+
+![img](wps16.jpg)
+
+```c
+int main() {
+  int i;
+  float f[22] = {1,1},sum=0;
+
+  for(i=2; i<=21; i++) {
+    f[i] = f[i-1] + f[i-2];
+    sum+=f[i]/f[i-1];
+  }
+  printf("sum=%.4f\n",sum);
+}
+```
+
+# 2007 年 1 月全国卷
+
+## 程序分析 每小题 5 分
+
+```c
+int main () {
+  int x = 15;
+  while(x<20) {
+    x++;
+    if(x/3!=0) {
+      x++;
+      break;
+    }else {
+      continue;
+    }
+  }
+  printf("%d\n",x);
+}
+// 17
+```
+
+```c
+fun(int a[], int i, int j) {
+  int t;
+  if(i<j) {
+    t = a[i]; 
+    a[i] = a[j]; 
+    a[j] = t;
+    i++; 
+    j--; 
+    fun(a,i,j);
+  }
+}
+
+int main() {
+  int x[] = {2,4,6},i;
+  fun(x,0,2);
+  for(i=0; i<3; i++) {
+    printf("%2d",x[i]);
+  }
+  printf("\n");
+}
+// 6 4 2
+```
+
+```c
+int main () {
+  int a,b,i;
+  a=b=0;
+  for(i=0;i<=10;i+=2) {
+    a += i;
+    b += i+1;
+  }
+  printf("a=%d\n",a); // 30
+  printf("b=%d\n",b-11); // 25
+}
+```
+
+```c
+int a=100;
+s() {
+  static int a=20;
+  a++;
+  printf("%d\n",a);
+}
+
+int main() {
+  int i;
+  for(i=1; i<=3; i++) {
+    a++;
+    printf("%d,",a);
+    s();
+  }
+}
+```
+
