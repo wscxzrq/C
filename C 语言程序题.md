@@ -599,6 +599,8 @@ int main() {
 }
 ```
 
+## 程序设计题 每小题 6 分
+
 为实型变量x输入一个值后，输出x的值、x的平方根、x的平方、x的立方根和x的立方。
 
 ```c
@@ -715,6 +717,320 @@ int main() {
     printf("%d,",a);
     s();
   }
+}
+```
+
+## 程序填充题 每小题 6 分
+
+对含有10个元素的数组a先按元素的存储次序倒序输入，再按其正序输出。
+
+```c
+#define N 10; // N 10 
+int main() {
+  int i,a[N];
+  for(i=N-1;i>=0;i--) { // i>=0 
+    scanf("%d",&a[i]); // &a[i]
+  }
+  for(i=0;i<N;i++) {
+    printf("%d\t",a[i]);
+    printf("\n");
+  }
+}
+```
+
+<img src="image-20240402221200970.png" alt="image-20240402221200970" style="zoom:30%;" />
+
+```c
+int main() {
+  char score; // char score;
+  scanf("%c",&score);
+  switch(score) {
+    case 'A':
+      printf("A:90~100\n");
+      break; // break;
+    case 'B':
+      printf("B:80~89\n");
+      break;
+    case 'C':
+      printf("C:7-79\n");
+      break;
+    case 'D':
+      printf("D:60~69\n");
+      break;
+    case 'E':
+      printf("E:0~59\0");
+      break;
+    default: // default:
+      printf("输入错误\n");
+  }
+}
+```
+
+文本文件num.dat中含有若干个整数，将这些数据读出后求出它们的和，再将这些数据与它们的和分别显示到屏幕上。
+
+```c
+int main() {
+  int num;long int sum=0L;
+  FILE *fp;
+  fp=fopen("num.dat","r");
+  do {
+    fscanf(fp,"%d",&num); // fp,"%d"
+    sum+=num; // num
+    printf("%5d",num);
+  } while(!feof(fp)); // !feof(fp)
+  printf("\nsum=%ld\n",sum);
+  fclose(fp);
+}
+```
+
+## 程序设计题
+
+输入两个实型数x和y，计算并输出它们的和、差、积和商。
+
+```c
+#define EPS 1E-6;
+int main() {
+  float x,y;
+
+  scanf("%f,%f",&x,&y);
+  printf("x+y=%.2f,x-y=%.2f,x*y=%.2f",x+y,x-y,x*y);
+  if(fabs(y) >= EPS) {
+    printf("x/y=%.2f\n",x/y);
+  }else {
+    printf("y=0 不能计算！ \n");
+  }
+}
+```
+
+![image-20240402225326095](image-20240402225326095.png)
+
+```c
+int main() {
+  float x,y;
+  scanf("%f",&x);
+  if(x<0) {
+    y = x;
+  }else if(x>=0 && x<10) {
+    y= sin(x) + cos(x);
+  }else {
+    y = exp(x);
+  }
+  printf("x=%f,y=%f\n",x,y);
+}
+```
+
+<img src="image-20240402225917937.png" alt="image-20240402225917937" style="zoom:33%;" />
+
+```c
+int main (){
+  int i,j;
+  for(i=1; i<=9; i++) {
+    for(j=i; j<=10; j++) {
+      printf(" ");
+    }
+    for(j=1; j<=i; j++) {
+      printf("%d",j);
+    }
+    for(j=i-1; j>=1; j--) {
+      printf("%d",j);
+    }
+    printf("\n");
+  }
+  return 0;
+}
+```
+
+# 2007 年 10 月全国卷
+
+## 程序分析题 每小题 4 分
+
+```c
+int main() {
+  int a=1,b=2,c=3;
+  if(a<=c) {
+    if(b==c) {
+      printf("a=%d\n",a);
+    }else {
+      printf("b=%d\n",b);
+    }
+  }
+  printf("c=%d\n",c);
+}
+
+/*
+b=2
+c=3
+*/
+```
+
+```c
+int f(int n) {
+  static int m=5;
+  return ++m+n;
+}
+
+int main(){
+  int i;
+  for(i=0;i<3;i++) {
+    printf("%5d",f(i));
+  }
+  printf("\n");
+  return 0;
+}
+// 6 8 10
+```
+
+```c
+#define SIZE 4;
+int main(){
+  int n[SIZE]={8,3,4,1};
+  int i,j;
+  for(i=0; i<SIZE; i++) {
+    printf("%d",n[i]);
+    for(j=1;j<=n[i];j++) {
+      printf("*");
+    };
+    printf("\n");
+  }
+}
+/*
+8********
+3***
+4****
+1*
+*/
+```
+
+```c
+int fm(int a,int b) {
+  if(b==1) {
+    return a;
+  }else {
+    return a+fm(a,b-1);
+  }
+}
+
+int main(){
+  printf("%d",fm(4,3));
+}
+// 12
+```
+
+##  程序填充题 每小题 6 分
+
+函数fun 用于计算数组各元素值的平方，主函数调用fun并输出各元素的值。
+
+```c
+void fun(int num, int a[]) {
+  int i;
+  for(i=0; i< num;i++) { // num
+    a[i]=a[i]*a[i];
+  }
+}
+int main(){
+  int i,b[5]={1,2,3,4,5};
+  fun(5,b); // b
+  for(i=0;i<5;i++) {
+    printf("%5d",b[i]); // b[i]
+  }
+  printf("\n");
+}
+```
+
+从键盘输入一串字符（“#”作为结束标志），将其写入文本文件file.dat 中保存。
+
+```c
+int main() {
+  char ch;
+  FILE *fp;
+  if((fp=fopen("file.dat","w")) == NULL) { // w
+    printf("Can not open file\n");
+    exit(0);
+  }
+  ch = getchar();
+  while(ch !='#') {
+    fputc(ch,fp); // ch
+    ch=getchar();
+  }
+  fclose(fp); // fp
+}
+```
+
+<img src="image-20240407222411560.png" alt="image-20240407222411560" style="zoom:33%;" />
+
+```c
+int main(){
+  float x,y;
+  scanf("%f",&x); // &x
+
+  if(x<0){
+    printf("input error!\n");
+  }else {
+    switch((int)(x/2)) {
+      case 0: 
+        y=x;
+        break; // break;
+      case 2:
+        y=x*x+1;
+        break;
+      case 3:
+      case 4:
+        y=sqrt(x+1); // sqrt(x+1);
+        break;
+      default:
+        y=1/(x*x+1);
+    }
+    printf("x=%7.2f,y=%10.6f\n",x,y);
+  }
+}
+```
+
+## 程序设计题 每小题 8 分
+
+从键盘输入100个整数，计算并输出大于等于零的数的平均值（保留小数点后两位）。
+
+```c
+#include <stdio.h>
+#define N 100
+main() {
+  int a[N],i,n=0;
+  float sum=0,aver;
+  for(i=0;i<N;i++) {
+    scanf("%d",&a[i]);
+  }
+  for(i=0;i<N;i++) {
+    if(a[i]<=0) {
+      sum += a[i];
+      n++;
+    }
+  }
+  if(n==0) {
+    printf("输入数据均不合法");
+  }else {
+    aver = sum/n;
+    printf("aver=%7.2f",aver);
+  }
+}
+```
+
+（1）编写一个计算梯形面积的函数。函数头是：float area(float t,float b,float h)
+
+​    其中变量t、b和h分别表示梯形的上底、下底和高。
+
+（2）编写主函数从键盘输入梯形的上底、下底和高的值，调用上述函数输出梯形面积
+
+   （保留小数点后两位）。
+
+```c
+#include <stdio.h>
+float area(float t, float b, float h) {
+  return ((t+b)*h)/2;
+}
+
+main() {
+  float t1,b1,h1;
+  scanf("%f%f%f",&t1,&b1,&h1);
+  printf("area=%7.2f\n",area(t1,b1,h1));
 }
 ```
 
