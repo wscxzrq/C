@@ -1034,3 +1034,196 @@ main() {
 }
 ```
 
+# 2008年一月全国卷
+
+## 程序分析题 每小题 4 分
+
+```c
+int main() {
+  int i,j,k;
+  char a[5] = {'*','*','*','*','*'};
+
+  for(i=0; i<4; i++) {
+    printf("\n");
+
+    for(j=0; j<=3*i;j++) {
+      printf("$");
+    }
+
+    for(k=0; k<5; k++) {
+      printf("%c",a[k]);
+    }
+  }
+}
+
+$*****
+$$$$*****
+$$$$$$$*****
+$$$$$$$$$$*****
+```
+
+```c
+int fib(int n) {
+  if(n==0 || n==1) {
+    return 1;
+  }else {
+    return fib(n-1)+fib(n-2);
+  }
+}
+
+int main() {
+  int i;
+  for(i=0; i<=4; i++) {
+    printf("%5d",fib(i));
+  }
+  printf("\n");
+}
+
+// 1 1 2 3 5
+```
+
+```c
+int main() {
+  int n = 0;
+  char str[80]="Abc+mNp-xyZ";
+  printf("%s\n",str);
+  while(str[n] != '\0') {
+    str[n++] = str[n] >= 'a' && str[n] <= 'z'? str[n] - 'a' + 'A' : str[n];
+  }
+  printf("%s\n",str);
+}
+```
+
+```c
+int f(int n) {
+  static int a=0;
+  int b=0;
+  a+=n;
+  b+=a;
+  return b;
+}
+
+int main() {
+  printf("%d\n",f(5));
+  printf("%d\n",f(10));
+}
+
+// 5
+// 15
+```
+
+## 程序填充题 每小题 6 分
+
+分别统计并输出17、18、19和20岁各年龄的学生人数。
+
+```c
+int main() {
+  int i,n,age,a[30];
+  for(i=0;i<30;i++) {
+    a[i]=0;
+  }
+
+  scanf("%d",&n);  /*   输入人数<30  */
+  for(i=0; i<n; i++) {
+    scanf("%d",&age);  /*  输入年龄   */
+    if(age<17||age>20) {
+      continue; // continue
+    }else {
+      switch(age) { // age
+        case 17:
+        case 18:
+        case 19:
+        case 20:
+          a[age-17]++;
+      }
+    }
+  }
+
+  for(i=0; i<=3; i++) {
+    printf("age=%dnumber=%d\n",i+17,a[i]); // a[i]
+  }
+}
+```
+
+将从键盘输入的字符串逆序显示。
+
+```c
+int main() {
+  int n;
+  char str[80],*p;
+  printf("Input a string");
+  gets(str); /*输入字符串*/ 
+  n=strlen(str);  // str
+  p=str+n-1; // n
+  while(p>=str) {
+    printf("%c",*p);
+    p--; // p--;
+  }
+  printf("/n");
+}
+```
+
+从键盘输入一个星期几（0~6），转换为对应的英文输出（Sunday, Monday,…），当输入小于0或大于6的数字时程序结束。
+
+```c
+int main() {
+  int week;
+  static char *weekname[]={"Sunday","Monday","Tuesday","Wednesday","Thrusday","Friday","Saturday"};
+
+  while(1){
+    printf("Input weekday.");
+    scanf("%d",&week); // &week
+    if(week<0 || week >6) { // week<0 || week>6
+      break;
+    }
+    printf("weekday:%d->%s\n",week,weekname[week]); // weekname[week]
+  }
+}
+```
+
+## 程序设计题 每小题 8 分
+
+从键盘输入100个整数，输出其中最大的数及其对应的数组下标值。
+
+```c
+#define N 100
+int main() {
+  int i,max,n,a[N];
+  for(i=0; i<N; i++) {
+    scanf("%d",&a[i]);
+  }
+
+  max=a[0];
+  n=0;
+  for(i=1; i<N; i++) {
+    if(a[i] > max) {
+      max = a[i];
+      n=i;
+    }
+  }
+
+  printf("%d%d\n",n,max);
+}
+```
+
+![image-20240408232107216](image-20240408232107216.png)
+
+```c
+int main() {
+  int score;
+  scanf("%d",&score);
+  printf("%d:",score);
+  if(score < 0 || score > 100) {
+    printf("Input error!\n");
+  }else {
+    if(score >= 80) {
+      printf("Good\n");
+    }else if(score >= 60) {
+      printf("Pass\n");
+    }else {
+      printf("No pass\n");
+    }
+  }
+}
+```
+
