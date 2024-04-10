@@ -1425,3 +1425,157 @@ int main() {
 // a=1,b=2
 ```
 
+```c
+int main() {
+  int a=10,b=20,*p1=&a,*p2=&b;
+  *p1=20;
+  *p2=40;
+  if(*p2>*p1) {
+    *p1=*p2;
+  }
+  printf("a=%d,b=%d\n",a,b);
+}
+// a=40,b=40
+```
+
+```c
+f(int b) {
+  static int y=3;
+  return (b+y++);
+}
+
+int main() {
+  int a=2,i,k;
+  for(i=0; i<2; i++) {
+    printf("%d\n",f(a++));
+  }
+}
+
+// 5 7
+```
+
+```c
+int funs(int n) {
+  if(n==1 || n==2) {
+    return 2;
+  }else {
+    return n+funs(n-1);
+  }
+}
+
+int main() {
+  int x=4;
+  printf("S=%d\n",funs(x));
+}
+
+// S=9
+```
+
+## 程序填充题 每小题 6 分
+
+从键盘输入10个整数，用“冒泡排序法”由小到大进行排序。
+
+```c
+#define N 10
+int main() {
+  int i,j,t,a[N];
+
+  for(i=0;i<N;i++) {
+    scanf("%d",&a[i]);
+  }
+  for(i=0;i<N-1;i++) {
+    for(j=N-1;j>i+1;j--) { // j--
+      if(a[j]<a[j-1]){
+        t=a[j];
+        a[j] = a[j-1]; // a[j]=a[j-1]
+        a[j-1]=t;
+      }
+    }
+  }
+  for(i=0; i<N;i++) {
+    printf("%5d",a[i]); // a[i]
+  }
+  printf("\n");
+}
+```
+
+统计文本文件file.dat的行数(提示：以’\n’作为每行的结束)。
+
+```c
+int main() {
+  int lines = 0;
+  char ch;
+  FILE *fp;
+  fp=fopen("file.dat","r");
+  while(!feof(fp)) {
+    ch=fgetc(fp);
+    if(ch =='\n') {
+      lines++;
+    }
+  }
+  printf("Lines=%d\n",lines);
+  fclose(fp);
+}
+```
+
+从键盘输入10名学生的姓名和数学、英语及C语言的成绩，计算并输出其总成绩和平均成绩。
+
+```c
+typedef struct {
+  char name[20];
+  int math,ehglish,C;
+  float sum,aver; /* 总成绩和平均成绩 */
+}STU;
+
+int main() {
+  STU st[10],*p;
+  int i;
+  for(i=0;i<10;i++) {
+    printf("Input name:");
+    scanf("%s",st[i].name); // st[i].name
+    printf("Input 3 score:");
+    scanf("%d,%d,%d",&st[i].math,&st[i].ehglish,&st[i].C);
+  }
+
+  for(p=st;p<st+10;p++) {
+    p->sum = p->math+p->ehglish+p->C; // sum
+    p->aver = p->sum/3; // aver
+    printf("name=%s,sum=%5.1f,aver=%5.1f\n",p->name,p->sum,p->aver);
+  }
+}
+```
+
+<img src="image-20240410231659573.png" alt="image-20240410231659573" style="zoom:33%;" />
+
+```c
+int main() {
+  float x,y;
+  scanf("%f",&x);
+  if(x<=0) {
+    y=sin(x);
+  }else if(x>10) {
+    y=1/(x*x*x+x*x+1);
+  }else {
+    y=x*x+1;
+  }
+  printf("x=%6.2f,y=%6.2f\n",x,y);
+}
+```
+
+<img src="image-20240410232055810.png" alt="image-20240410232055810" style="zoom:33%;" />
+
+```c
+float temp(float x) {
+  float t;
+  t=9.0/5*x+32;
+  return t;
+}
+
+int main() {
+  float F,C;
+  scanf("%f",&C);
+  F=temp(C);
+  printf("C=%6.2f,F=%6.2f\n",C,F);
+}
+```
+
