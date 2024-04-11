@@ -1579,3 +1579,127 @@ int main() {
 }
 ```
 
+# 2009 年 10 月全国卷
+
+## 程序分析题 每小题 4 分
+
+```c
+int main() {
+  int i,a[5],*p;
+  for(i=4; i>=0; i--) {
+    *(a+i)=i;
+  }
+
+  for(p=a;p<a+5;p++) {
+    printf("%d\t",*p);
+  }
+
+  printf("\n");
+}
+// 0 1 2 3 4
+```
+
+```c
+gcd(int p, int q) {
+  if(p==q) {
+    return p;
+  }else if(p > q) {
+    return gcd(p-q,q);
+  }else {
+    return gcd(p,q-p);
+  }
+}
+
+int main() {
+  int m=24,n=36,min,max;
+  max=gcd(m,n);
+  min=m*n/max;
+  printf("max=%d,min=%d\n",max,min);
+}
+// max=12,min=72
+```
+
+```c
+struct people {
+  char name[10];
+  float score;
+};
+
+
+int main() {
+  struct people per[] = {{"Tom",95.5},{"Mary",88.0}};
+  struct people *p = per+1;
+  printf("%s%.1f\n",per[0].name,p->score);
+  return 0;
+}
+// Tom88.0
+```
+
+## 程序填充题 每小题 6 分
+
+对两个整型变量先进行输入和输出,将它们的值交换后再输出。
+
+```c
+#define PR printf("a=%d,b=%d\n",a,b)
+int main() {
+  int a,b,temp;
+  scanf("%d%d",&a,&b);
+  PR;
+  temp=a;
+  a=b;
+  b=temp;
+  PR;
+}
+```
+
+为二维数组各元素输入数据,计算并输出全部元素之和。
+
+```c
+#define N 5
+int main() {
+  int i,j,a[N][N],sum=0;
+
+  for(i=0;i<N;i++) {
+    for(j=0;j<N;j++) {
+      scanf("%d",&a[i][j]);
+      sum+=a[i][j];
+    }
+  }
+  printf("sum=%d\n",sum);
+}
+```
+
+<img src="image-20240411223705628.png" alt="image-20240411223705628" style="zoom:33%;" />
+
+```c
+int main() {
+  int n,k=0;
+  float sum=0.0;
+  scanf("%d",&n);
+  do {
+    k++;
+    if(k%2 != 0) {
+      sum+=1.0/k;
+    }else {
+      sum-=1.0/k;
+    }
+  }while(k<n);
+  printf("sum=%.4f\n",sum);
+}
+```
+
+## 程序设计题 每小题 8 分
+
+<img src="image-20240411224445080.png" alt="image-20240411224445080" style="zoom:33%;" />
+
+```c
+int main() {
+  int book=1020,day=0;
+  while(book >0) {
+    book=book/2-2;
+    day++;
+  }
+  printf("day=%d\n",day);
+}
+```
+
