@@ -118,15 +118,9 @@ int swap(int *p1, int *p2) {
 }
 
 int main() {
-  // int a=1,b=2;
-  // scanf("%d%d",&a,&b);
-  // swap(&a,&b);
-  // printf("a=%d,b=%d",a,b);
+  int a=1,b=2;
+  scanf("%d%d",&a,&b);
+  swap(&a,&b);
+  printf("a=%d,b=%d",a,b);
 
-
-int x=3;
-do{
-    printf("%5d",x-=2);
-  }while(!(--x));
-  return 0;
 }
