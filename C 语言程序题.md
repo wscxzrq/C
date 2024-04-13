@@ -1703,3 +1703,171 @@ int main() {
 }
 ```
 
+# 2010 年 1 月全国卷
+
+## 程序分析题 每题 4 分
+
+```c
+int main() {
+  int color=2;
+  switch(color) {
+    case 1: 
+      printf("red\n");
+      break;
+    case 2:
+      printf("yellow\n");
+    case 3:
+      printf("blue\n");
+  }
+}
+// yellow
+// blue
+```
+
+```c
+int main() {
+  int m,n;
+  for(m=1; m<=3; m++) {
+    for(n=1; n<=2*m-1;n++) {
+      printf("*");
+    }
+    printf("\n");
+  }
+}
+*
+***
+*****
+```
+
+```c
+int main () {
+  int a[2][3]={{1,2,3},{4,5,6}};
+  int b[3][2],i,j;
+  for(i=0; i<=1; i++) {
+    for(j=0; j<=2; j++) {
+      printf("%5d",a[i][j]);
+      b[j][i]=a[i][j];
+    }
+    printf("\n");
+  }
+  printf("array b:\n");
+  for(i=0;i<=2;i++) {
+    for(j=0; j<=1; j++) {
+      printf("%5d",b[i][j]);
+    } 
+  }
+}
+1 2 3
+4 5 6
+
+array b:
+1 4 2 5 3 6
+```
+
+## 程序填充题 每小题 6 分
+
+从键盘输入10个学生的姓名、性别和成绩，计算并输出这些学生的平均成绩。
+
+```c
+#define N 10
+struct student {
+  char name[20];
+  char sex;
+  int score;
+} stu[N];
+
+int main() {
+  int i;
+  float aver,sum=0;
+
+  for(i=0; i<N; i++) {
+    scanf("%d,%c%s",&stu[i].score,&stu[i].sex,&stu[i].name); // &stu[i].score,&stu[i].sex,&stu[i].name
+    sum=sum+stu[i].score; // stu[i].score
+  }
+  aver=sum / N; // N
+  printf("aver=%6.2f\n",aver);
+}
+```
+
+从键盘输入一串字符(以“?”作为结束标志)，保存到文本文件text. txt中。
+
+```c
+int main() {
+  FILE *fp; // *fp
+  char ch;
+  if(fp=fopen("text.txt","w") == NULL) { // "w"
+    exit(0);
+  }
+  while((ch=getchar() != '?')) {
+    fputc(ch,fp); // fp
+  }
+  fclose(fp);
+} 
+```
+
+用递归方法计算学生年龄，已知第一位学生年龄为10岁，其余学生一个比一个大2岁，求第5位学生的年龄。
+
+```c
+int age(int n) {
+  if(n==1){
+    return(10);
+  }else {
+    return(age(n-1)+2);
+  }
+}
+
+int main() {
+  printf("%d\n",age(5));
+}
+```
+
+## 程序设计题 每小题 8 分
+
+从键盘输入三个整数a、b和c，按照由小到大的顺序输出。
+
+```c
+int main() {
+  int a,b,c,t;
+  scanf("%d%d%d",&a,&b,&c);
+  
+  if(a > b) {
+    t=a;
+    a=b;
+    b=t;
+  }
+
+  if(a > c) {
+    t=a;
+    a=c;
+    c=t;
+  }
+
+  if(b>c) {
+    t=b;
+    b=c;
+    c=t;
+  }
+
+  printf("a=%d,b=%d,c=%d",a,b,c);
+}
+```
+
+<img src="image-20240412230953617.png" alt="image-20240412230953617" style="zoom:33%;" />
+
+```c
+int swap(int *p1, int *p2) {
+  int temp;
+  temp = *p1;
+  *p1 = *p2;
+  *p2 = temp;
+}
+
+int main() {
+  int a=1,b=2;
+  scanf("%d%d",&a,&b);
+  swap(&a,&b);
+  printf("a=%d,b=%d",a,b);
+  return 0;
+}
+```
+
