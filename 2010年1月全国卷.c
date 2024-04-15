@@ -122,5 +122,5 @@ int main() {
   scanf("%d%d",&a,&b);
   swap(&a,&b);
   printf("a=%d,b=%d",a,b);
-
+  int c=3.4e-2;
 }
